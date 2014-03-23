@@ -112,7 +112,7 @@ App.SocialRoute = Ember.Route.extend({
   model: function() {
   	App.set('nextRoute', 'art');
 
-		var url = 'https://api.instagram.com/v1/users/346897065/media/recent/?client_id=04923db14a2a4a70b84c2dc23cd9096c&count=4';
+		var url = 'https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001?language=en&key=E6E56C758A6519F6B70ED041CDC6FF4F';
 
 		return $.getJSON(url).then(function(response) {
 			console.log(response);
