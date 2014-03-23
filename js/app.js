@@ -5,13 +5,6 @@ App = Ember.Application.create({
   }
 });
 
-App.ApplicationAdapter = DS.RESTAdapter.extend({
-	// outputs a different api endpoint depending on environment. get rid of this when we go live
-	host: 'https://api.steampowered.com/',
-
-	defaultSerializer: "DS/customRest",
-});
-
 DS.CustomRestSerializer = DS.RESTSerializer.extend({
 	extractSingle: function(store, type, payload, id, requestType) {
 		return this._super(store, type, payload.result, id, requestType);
@@ -22,6 +15,7 @@ DS.CustomRestSerializer = DS.RESTSerializer.extend({
 	}
 });
 
+// controller for main route
 App.IndexController = Ember.Controller.extend({
 	actions: {
 		more: function(){
@@ -31,6 +25,7 @@ App.IndexController = Ember.Controller.extend({
 	}
 });
 
+// sticky navigation view
 App.navView = Ember.View.extend({
 	classNames: ['navbar'],
 	didInsertElement: function(){
