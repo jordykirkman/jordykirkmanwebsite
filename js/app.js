@@ -112,7 +112,7 @@ App.SocialRoute = Ember.Route.extend({
   model: function() {
   	App.set('nextRoute', 'art');
 
-		var url = 'apihandler.php';
+		var url = 'https://api.instagram.com/v1/users/346897065/media/recent/?client_id=04923db14a2a4a70b84c2dc23cd9096c&count=4';
 
 		return $.getJSON(url).then(function(response) {
 			console.log(response);
