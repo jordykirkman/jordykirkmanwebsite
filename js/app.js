@@ -178,6 +178,11 @@ App.Stuff2Route = Ember.Route.extend({
 	}
 });
 
+App.LoadingRoute = Ember.Route.extend();
+
+var LoadTemplate = Ember.Handlebars.compile('<div class="loading"><img src="../images/loading.gif"/></div>');
+App.register( 'template:loading', LoadTemplate );
+
 
 App.dotaHeroView = Ember.View.extend({
 	attributeBindings: ['style'],
