@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ember Starter Kit</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+  <script type="text/x-handlebars">
+  <div class="header padd">
+ <h2>Im Jordy and this is my site!</h2>
+ <p class="caption"> 
+  I like seeing comments in code so much I decided to put them in the interface too! I will caption how most of my code works when possible.
+ </p>
+ </div>
+  <div class="nav-container">
+  <div class="nav-splatter"></div>
+    {{view App.navView}}
+  </div>
+  <div class="container">
+    
+    {{outlet}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="index">
+    {{#view App.containerView}}
+    {{outlet}}
+    {{/view}}
+  </script>
+
+  <script type="text/x-handlebars" id="social">
+  <div class="sixteen columns section">
+  {{#each model.instagram.data}}
+    <img {{bind-attr class=":showcase-image" src="images.low_resolution.url"}}/>
+  {{/each}}
+ <div style="clear:both"></div>
+  {{#each model.heroes.result.heroes}}
+    {{view App.dotaHeroView}}
+  {{/each}}
+  </div>
+    <div style="clear:both"></div>
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="art">
+  <div class="sixteen columns section"></div>
+    <div style="clear:both"></div>
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="dev">
+  <div class="sixteen columns section"></div>
+    <div style="clear:both"></div>
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="stuff1">
+  <div class="sixteen columns section"></div>
+    <div style="clear:both"></div>
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="stuff2">
+    <div class="sixteen columns section"></div>
+    <div style="clear:both"></div>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.3.1.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/libs/svg.min.js"></script>
+  <script src="js/app.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
+</body>
+</html>
