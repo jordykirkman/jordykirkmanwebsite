@@ -45,77 +45,78 @@ App.SocialSerializer = DS.RESTSerializer.extend({
 		var newObj = {};
 		newObj['social'] = {};
 		newObj['social']['id'] = 1;
-
-		// lets reformat our instagram stuff so ember data can work with it
-		if(payload.social.instagrams){
-			var instagramIds = payload.social.instagrams.mapProperty('id');
-			newObj['social']['instagrams'] = instagramIds;
-			newObj['instagrams'] = [];
-			payload.social.instagrams.forEach(function(model){
-				var modelObj = {};
-				modelObj['id'] = model.id;
-				$.each( model.images, function( modelkey, modelvalue ) {
-					modelObj[modelkey.camelize()] = modelvalue.url;
+		if(payload.social){
+			// lets reformat our instagram stuff so ember data can work with it
+			if(payload.social.instagrams){
+				var instagramIds = payload.social.instagrams.mapProperty('id');
+				newObj['social']['instagrams'] = instagramIds;
+				newObj['instagrams'] = [];
+				payload.social.instagrams.forEach(function(model){
+					var modelObj = {};
+					modelObj['id'] = model.id;
+					$.each( model.images, function( modelkey, modelvalue ) {
+						modelObj[modelkey.camelize()] = modelvalue.url;
+					});
+					modelObj['likes'] = model.likes.count;
+					modelObj['caption'] = model.caption.text;
+					newObj['instagrams'].pushObject(modelObj);
 				});
-				modelObj['likes'] = model.likes.count;
-				modelObj['caption'] = model.caption.text;
-				newObj['instagrams'].pushObject(modelObj);
-			});
-		}
+			}
 
-		// lets lets reformat our d3 history
-		if(payload.social.diablo.heroes){
-			var diabloObj = {};
-			diabloObj['id'] = 1;
-			var diabloHeroIds = payload.social.diablo.heroes.mapProperty('id');
-			diabloObj['diabloHeroes'] = diabloHeroIds;
-			diabloObj['lastHeroPlayed'] = payload.social.diablo.lastHeroPlayed;
-			diabloObj['monsterKills'] = payload.social.diablo.kills.monsters;
-			diabloObj['eliteKills'] = payload.social.diablo.kills.elites;
-			newObj['diablos'] = [];
-			newObj['diablos'].pushObject(diabloObj);
-			newObj['social']['diablo'] = 1;
-			newObj['diabloHeroes'] = payload.social.diablo.heroes;
-		}
+			// lets lets reformat our d3 history
+			if(payload.social.diablo.heroes){
+				var diabloObj = {};
+				diabloObj['id'] = 1;
+				var diabloHeroIds = payload.social.diablo.heroes.mapProperty('id');
+				diabloObj['diabloHeroes'] = diabloHeroIds;
+				diabloObj['lastHeroPlayed'] = payload.social.diablo.lastHeroPlayed;
+				diabloObj['monsterKills'] = payload.social.diablo.kills.monsters;
+				diabloObj['eliteKills'] = payload.social.diablo.kills.elites;
+				newObj['diablos'] = [];
+				newObj['diablos'].pushObject(diabloObj);
+				newObj['social']['diablo'] = 1;
+				newObj['diabloHeroes'] = payload.social.diablo.heroes;
+			}
 
-		// now our starcraft career
-		if(payload.social.starcraft){
-			var scObj = {};
-			scObj['id'] = payload.social.starcraft.id;
-			// scObj['portrait'] = payload.social.starcraft.portrait.url;
-			newObj['social']['starcraft'] = payload.social.starcraft.id;
-			newObj['starcrafts'] = [];
-			newObj['starcrafts'].pushObject(scObj);
-		}
+			// now our starcraft career
+			if(payload.social.starcraft){
+				var scObj = {};
+				scObj['id'] = payload.social.starcraft.id;
+				// scObj['portrait'] = payload.social.starcraft.portrait.url;
+				newObj['social']['starcraft'] = payload.social.starcraft.id;
+				newObj['starcrafts'] = [];
+				newObj['starcrafts'].pushObject(scObj);
+			}
 
-		// now our dota heroes
-		if(payload.social.heroes){
-			var heroIds = payload.social.heroes.mapProperty('id');
-			newObj['social']['dotaHeroes'] = heroIds;
-			newObj['dotaHeroes'] = payload.social.heroes;
-		}
+			// now our dota heroes
+			if(payload.social.heroes){
+				var heroIds = payload.social.heroes.mapProperty('id');
+				newObj['social']['dotaHeroes'] = heroIds;
+				newObj['dotaHeroes'] = payload.social.heroes;
+			}
 
-		// now our dota match history
-		if(payload.social.matches){
-			var matchIds = payload.social.matches.mapProperty('match_id');
-			newObj['social']['matches'] = matchIds;
+			// now our dota match history
+			if(payload.social.matches){
+				var matchIds = payload.social.matches.mapProperty('match_id');
+				newObj['social']['matches'] = matchIds;
 
-			newObj['matches'] = [];
-			payload.social.matches.forEach(function(match){
+				newObj['matches'] = [];
+				payload.social.matches.forEach(function(match){
 
-				var matchObj = {};
-				matchObj['id'] = match.match_id;
-				var heroIds = match.players.mapProperty('hero_id');
-				matchObj['heroes'] = heroIds;
+					var matchObj = {};
+					matchObj['id'] = match.match_id;
+					var heroIds = match.players.mapProperty('hero_id');
+					matchObj['heroes'] = heroIds;
 
-				match.players.forEach(function(player){
-					if(player.account_id == 139716592){
-						matchObj['hero'] = player.hero_id;
-					}
+					match.players.forEach(function(player){
+						if(player.account_id == 139716592){
+							matchObj['hero'] = player.hero_id;
+						}
+					});
+					newObj['matches'].pushObject(matchObj);
+
 				});
-				newObj['matches'].pushObject(matchObj);
-
-			});
+			}
 		}
 
 		// console.log(newObj);
