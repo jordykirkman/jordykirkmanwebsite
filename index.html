@@ -58,11 +58,12 @@
     
   </script>
 
-  <script type="text/x-handlebars" id="social">
-  <div id="social" class="social sixteen columns section">
+  <script type="text/x-handlebars" id="instagram">
+  <div id="instagram" class="social sixteen columns section">
+
     <h3>Last Instagram posts -follow me! <a href="http://instagram.com/jordykirkman" target="_blank">instagram.com/jordykirkman</a></h3>
     <p class="caption">Posts fetched dynamically from the instgram feed api</p>
-    {{#each model.instagrams}}
+    {{#each model}}
       <div class="showcase-image">
         <img {{bind-attr src="lowResolution"}}/>
         <p>
@@ -70,7 +71,13 @@
         </p> 
       </div>
     {{/each}}
-    <div class="seperator"></div>
+
+  </div>
+  </script>
+
+  <script type="text/x-handlebars" id="social">
+  <div id="social" class="social sixteen columns section">
+
     <h3>Last played DotA2 heroes</h3>
     <p class="caption">Last heroes fetched dynamically from the Steam match history api. An abstracted ember view transforms each hero id into the image with name.</p>
     <div class="dota-heroes">
@@ -106,6 +113,7 @@
     {{view App.imageViewer path="dota" full="mirana_8bit.png" thumb="mirana_8bit_thumb.png" alt="Mirana Dota 2 8-bit"}}
     {{view App.imageViewer path="dota" full="ogremagi_8bit.png" thumb="ogremagi_8bit_thumb.png" alt="Ogre Magi Dota 2 8-bit"}}
     {{view App.imageViewer path="dota" full="crystalmaiden_8bit.png" thumb="crystalmaiden_8bit_thumb.png" alt="Crystal Maiden Dota 2 8-bit"}}
+    {{view App.imageViewer path="dota" full="timbersaw_8bit.png" thumb="timbersaw_8bit_thumb.png" alt="Timbersaw Dota 2 8-bit"}}
   </div>
     <div class="seperator"></div>
     {{outlet}}

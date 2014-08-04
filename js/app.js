@@ -8,9 +8,14 @@ App = Ember.Application.create({
 
 App.ApplicationAdapter = DS.RESTAdapter.extend({
 	// outputs a different api endpoint depending on environment. get rid of this when we go live
-	host: 'apihandler.php?',
+	host: 'api',
 
 	defaultSerializer: "DS/customRest",
+
+	buildURL: function(type, id) {
+		var opportunity = App.get('opportunity.id');
+		return this._super(type) + '.php';
+	},
 });
 
 DS.CustomRestSerializer = DS.RESTSerializer.extend({
@@ -39,6 +44,31 @@ DS.CustomRestSerializer = DS.RESTSerializer.extend({
   }
 });
 
+App.InstagramSerializer = DS.RESTSerializer.extend({
+	extractSingle: function(store, type, payload, id, requestType) {
+		console.log(payload);
+		var newObj = {};
+		newObj['instagrams'] = [];
+		// lets reformat our instagram stuff so ember data can work with it
+		if(payload.instagram){
+			// var instagramIds = payload.instagrams.mapProperty('id');
+			// newObj['instagrams'] = instagramIds;
+			// newObj['instagrams'] = [];
+			payload.instagrams.forEach(function(model){
+				var modelObj = {};
+				modelObj['id'] = model.id;
+				$.each( model.images, function( modelkey, modelvalue ) {
+					modelObj[modelkey.camelize()] = modelvalue.url;
+				});
+				modelObj['likes'] = model.likes.count;
+				modelObj['caption'] = model.caption.text;
+				newObj['instagrams'].pushObject(modelObj);
+			});
+		}
+		return this._super(store, type, newObj, id, requestType);
+	}
+});
+
 App.SocialSerializer = DS.RESTSerializer.extend({
 	extractSingle: function(store, type, payload, id, requestType) {
 		console.log(payload);
@@ -46,22 +76,6 @@ App.SocialSerializer = DS.RESTSerializer.extend({
 		newObj['social'] = {};
 		newObj['social']['id'] = 1;
 		if(payload.social){
-			// lets reformat our instagram stuff so ember data can work with it
-			if(payload.social.instagrams){
-				var instagramIds = payload.social.instagrams.mapProperty('id');
-				newObj['social']['instagrams'] = instagramIds;
-				newObj['instagrams'] = [];
-				payload.social.instagrams.forEach(function(model){
-					var modelObj = {};
-					modelObj['id'] = model.id;
-					$.each( model.images, function( modelkey, modelvalue ) {
-						modelObj[modelkey.camelize()] = modelvalue.url;
-					});
-					modelObj['likes'] = model.likes.count;
-					modelObj['caption'] = model.caption.text;
-					newObj['instagrams'].pushObject(modelObj);
-				});
-			}
 
 			// lets lets reformat our d3 history
 			if(payload.social.diablo.heroes){
@@ -140,6 +154,9 @@ App.ApplicationController = Ember.Controller.extend({
 			App.toggleProperty('lightbox');
 		}
 	}
+});
+
+App.InstagramController = Ember.ArrayController.extend({
 });
 
 App.SocialController = Ember.Controller.extend({
@@ -299,21 +316,30 @@ App.Starcraft = DS.Model.extend({
 });
 
 App.Router.map(function() {
-  this.resource('index', { path: "/" }, function(){
-  	this.resource('social', { path: "/social" }, function(){
 
-	  	this.resource('art', { path: "/art" }, function(){
+	this.resource('index', { path: "/" }, function(){
 
-		  	this.resource('dev', { path: "/dev" }, function(){
+		this.resource('instagram', { path: "/instagram" }, function(){
 
-			  	this.resource('stuff1', { path: "/stuff1" }, function(){
-				  	this.resource('stuff2', { path: "/stuff2" }, function(){
-				  	});
-			  	});
-		  	});
-	  	});
-  	});
-  });
+			this.resource('social', { path: "/social" }, function(){
+
+				this.resource('art', { path: "/art" }, function(){
+
+					this.resource('dev', { path: "/dev" }, function(){
+
+						// this.resource('stuff1', { path: "/stuff1" }, function(){
+						// });
+
+					});
+
+				});
+
+			});
+
+		});
+
+	});
+
 });
 
 App.ScrollerRoute = Ember.Route.extend({
@@ -335,20 +361,38 @@ App.ScrollerRoute = Ember.Route.extend({
 
 App.IndexRoute = Ember.Route.extend({
 	activate: function(){
-		this.transitionTo('social');
+		this.transitionTo('instagram');
+	},
+
+});
+
+App.InstagramRoute = App.ScrollerRoute.extend({
+	prev: null,
+	next: 'social',
+	past: 'instagram',
+	link: {'name': 'Instagram', 'link': 'instagram'},
+
+	model: function(params) {
+		// var url = 'apihandler.php';
+		var model = this.store.find('instagram');
+
+		return model;
+	},
+	setupController: function(controller, model){
+		controller.set('model', model);
 	},
 
 });
 
 App.SocialRoute = App.ScrollerRoute.extend({
-	prev: null,
+	prev: 'instagram',
 	next: 'art',
 	past: 'social',
 	link: {'name': 'Social', 'link': 'social'},
 
 	model: function(params) {
 		// var url = 'apihandler.php';
-		var model = this.store.find('social', 1);
+		var model = this.store.find('instagrams', 1);
 
 		return model;
 	},
