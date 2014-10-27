@@ -1,0 +1,16 @@
+<div id="dota" class="dota sixteen columns section">
+
+  <div class="padd">
+    <h3>Last played DotA2 heroes</h3>
+    <p class="caption">Last heroes fetched dynamically from the Steam match history api. An abstracted ember view transforms each hero id into the image with name.</p>
+    <div class="dota-heroes">
+      {{#each controller}}
+          {{view App.dotaHeroView}}
+      {{/each}}
+      <div class="clear"></div>
+    </div>
+  </div>
+
+</div>
+
+{{outlet}}

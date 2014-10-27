@@ -1,0 +1,34 @@
+  <div class="wrapper">
+
+    {{view App.navView}}
+    <div id="canvas" class="nav-splatter"></div>
+
+    <div class="content">
+    <div class="header padd">
+      <img class="header-img" src="./images/bone_dragon_animated.gif"/>
+      <h2>Im Jordy and this is my site!</h2>
+      <p class="caption"> 
+        A developer who is not afraid to use animated gifs.
+      </p>
+      <div class="clear"></div>
+    </div>
+    </div>
+
+    {{view App.staticNavView}}
+    
+    <div class="container">
+      {{outlet}}
+    </div>
+    <div {{bind-attr class=":lightbox App.lightbox::hide"}}>
+      <div class="image-container">
+       <span class="close-bttn" {{action "closeLightbox"}}><i class="fi-x"></i></span>
+       <img {{bind-attr src="App.lightboxImage"}}/>
+      </div>
+    </div>
+    </div>
+    <div class="clear"></div>
+    <div class="footer-wrapper">
+    <div class="footer">
+      <div class="g-person" data-href="//plus.google.com/u/0/101784341180890259086" data-theme="dark" data-layout="landscape" data-rel="author"></div>
+    </div>
+    </div>
