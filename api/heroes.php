@@ -1,20 +1,11 @@
 <?php
 
-// check if the min image id is set, if so put it on the endpoint
-if($_GET['minid']){
-    define('MINID', "&max_id=" . $_GET['minid']);
-    define('COUNT', 1);
-} else {
-    define('MINID', "");
-    define('COUNT', 2);
-}
-
-function get_instagram() {
+function get_heroes() {
 
     // OK cool - let's create a new cURL resource handle
     $ch = curl_init();
     // Set URL to download
-    curl_setopt($ch, CURLOPT_URL, 'https://api.instagram.com/v1/users/346897065/media/recent/?client_id=04923db14a2a4a70b84c2dc23cd9096c' . MINID);
+    curl_setopt($ch, CURLOPT_URL, 'https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001?language=en&key=E6E56C758A6519F6B70ED041CDC6FF4F');
     // Include header in result? (0 = yes, 1 = no)
     curl_setopt($ch, CURLOPT_HEADER, 0);
     // Should cURL return or print out the data? (true = return, false = print)
@@ -28,15 +19,10 @@ function get_instagram() {
     return json_decode($output);
 }
 
-$feed = get_instagram()->data;
-
-// add our decoded objects together
-$response = array(
-    'instagrams' => $feed
-);
+$heroes = get_heroes()->result->heroes;
 
 // encode them and return it
-echo json_encode($response);
+echo json_encode($heroes);
 
 
 ?>

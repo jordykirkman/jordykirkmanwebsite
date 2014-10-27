@@ -98,6 +98,7 @@ body {
 	background-image: url('../images/footer_bg.jpg');
 	background-repeat: repeat-x;
 	position: relative;
+	color: #fff;
 }
 .content {
 	padding-top: 20px;

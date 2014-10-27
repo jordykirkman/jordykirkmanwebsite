@@ -1,4 +1,5 @@
 <?php
+
 function get_heroes() {
 
     // OK cool - let's create a new cURL resource handle
@@ -37,59 +38,12 @@ function get_matches() {
     return json_decode($output);
 }
 
-function get_sc2() {
-
-    // OK cool - let's create a new cURL resource handle
-    $ch = curl_init();
-    // Set URL to download
-    curl_setopt($ch, CURLOPT_URL, 'http://us.battle.net/api/sc2/profile/348276/1/JordyBot/');
-    // Include header in result? (0 = yes, 1 = no)
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    // Should cURL return or print out the data? (true = return, false = print)
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // Timeout in seconds
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    // Download the given URL, and return output
-    $output = curl_exec($ch);
-    // Close the cURL resource, and free system resources
-    curl_close($ch);
-    return json_decode($output);
-}
-
-function get_d3() {
-
-    // OK cool - let's create a new cURL resource handle
-    $ch = curl_init();
-    // Set URL to download
-    curl_setopt($ch, CURLOPT_URL, 'http://us.battle.net/api/d3/profile/Jordy-1730/');
-    // Include header in result? (0 = yes, 1 = no)
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    // Should cURL return or print out the data? (true = return, false = print)
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // Timeout in seconds
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    // Download the given URL, and return output
-    $output = curl_exec($ch);
-    // Close the cURL resource, and free system resources
-    curl_close($ch);
-    return json_decode($output);
-}
-
 $heroes = get_heroes()->result->heroes;
 $matches = get_matches()->result->matches;
-$feed = get_instagram()->data;
-$sc2 = get_sc2();
-$d3 = get_d3();
 
-// add our decoded objects together
 $response = array(
-    'social' => array(
-        'id' => 1,
-        'heroes' => $heroes,
-        'matches' => $matches,
-        'starcraft' => $sc2,
-        'diablo' => $d3
-    )
+    'heroes' => $heroes,
+    'matches' => $matches,
 );
 
 // encode them and return it

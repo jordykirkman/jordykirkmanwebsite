@@ -1,11 +1,10 @@
 <?php
-
-function get_instagram() {
+function get_heroes() {
 
     // OK cool - let's create a new cURL resource handle
     $ch = curl_init();
     // Set URL to download
-    curl_setopt($ch, CURLOPT_URL, 'https://api.instagram.com/v1/users/346897065/media/recent/?client_id=04923db14a2a4a70b84c2dc23cd9096c&count=4');
+    curl_setopt($ch, CURLOPT_URL, 'https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001?language=en&key=E6E56C758A6519F6B70ED041CDC6FF4F');
     // Include header in result? (0 = yes, 1 = no)
     curl_setopt($ch, CURLOPT_HEADER, 0);
     // Should cURL return or print out the data? (true = return, false = print)
@@ -76,19 +75,18 @@ function get_d3() {
     return json_decode($output);
 }
 
-$heroes = get_heroes()->result->heroes;
-$matches = get_matches()->result->matches;
-$feed = get_instagram()->data;
+// $heroes = get_heroes()->result->heroes;
+// $matches = get_matches()->result->matches;
+// $feed = get_instagram()->data;
 $sc2 = get_sc2();
 $d3 = get_d3();
 
 // add our decoded objects together
 $response = array(
-    'social' => array(
+    'gaming' => array(
         'id' => 1,
-        'instagrams' => $feed,
-        'heroes' => $heroes,
-        'matches' => $matches,
+        // 'heroes' => $heroes,
+        // 'matches' => $matches,
         'starcraft' => $sc2,
         'diablo' => $d3
     )
