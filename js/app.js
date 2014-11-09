@@ -87,26 +87,6 @@ define(
 		link: {'name': 'Dev', 'link': 'dev'},
 	});
 
-	// App.Stuff1Route = Ember.Route.extend({
-	//   activate: function(){
-	//   	App.set('nextRoute', 'stuff2');
-	//   },
-	// 	deactivate: function(){
-	// 	// when a route is torn down
-	// 		App.set('nextRoute', 'stuff1');
-	// 	}
-	// });
-
-	// App.Stuff2Route = Ember.Route.extend({
-	//   activate: function(){
-	//   	App.set('nextRoute', null);
-	//   },
-	// 	deactivate: function(){
-	// 	// when a route is torn down
-	// 		App.set('nextRoute', 'stuff2');
-	// 	}
-	// });
-
 	App.LoadingRoute = Ember.Route.extend();
 
 	var LoadTemplate = Ember.Handlebars.compile('<div class="loading"><img src="./images/hydra_loading.gif"/></div>');

@@ -1,11 +1,4 @@
 /* animation styels */
-.animated {
-	-webkit-transition: all .4s ease;
-	-moz-transition: all .4s ease;
-	-ms-transition: all .4s ease;
-	-o-transition: all .4s ease;
-	transition: all .4s ease;
-}
 
 @font-face {
 	font-family: 'icomoon';
@@ -62,7 +55,7 @@ body {
 	
 }
 .padd {
-	padding: 0 10px;
+	padding: 0 20px;
 }
 .hide {
 	display: none;
@@ -156,31 +149,64 @@ body {
 div.showcase-image {
 	float: left;
 }
-.showcase-image img {
-	width: 100%;
+
+.instagram-window {
+	overflow: hidden;
 }
+
+.instagram-window .showcase-image.side-panel {
+	opacity: 0.4;
+	padding-top: 65%;
+	margin-top: 2.5%%;
+}
+
 .instagram-window .showcase-image {
 	width: 66.6%;
-    -webkit-transition: width 0.5s;
-    -moz-transition: width 0.5s;
-    -o-transition: width 0.5s;
-    transition: width 0.5s;
+	overflow: hidden;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-top: 70%;
+	position: relative;
+    -webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 0.5s ease-in-out;
+    -o-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+    
 }
+
+.instagram-window .showcase-image .padd {
+	opacity: 1;
+	position: absolute;
+	bottom: 0;
+	transition: all 1s ease-in-out;
+	/*transition-delay: 1s;*/
+}
+
+.instagram-window .showcase-image.side-panel .padd {
+	opacity: 0;
+	transition: all 0s ease-in-out;
+}
+
+.instagram-window .showcase-image p {
+	color: #fff;
+	background-image: url('../images/trans_50perc.png');
+	padding: 5px;
+	border-radius: 6px;
+}
+
 .instagram-window .showcase-image.side-panel {
 	width: 16.66%;
-	overflow: hidden;
 	position: relative;
-    -webkit-transition: width 0.5s;
+/*    -webkit-transition: width 0.5s;
     -moz-transition: width 0.5s;
     -o-transition: width 0.5s;
-    transition: width 0.5s;
+    transition: width 0.5s;*/
 }
-.instagram-window .showcase-image.side-panel img.instagram-image {
-	width: 400%;
-	opacity: 0.4;
-}
+
 .instagram-window .showcase-image a.next-image {
 	position: absolute;
+	z-index: 1;
 	top: 50%;
 	right: 50%;
 	text-decoration: inherit;
@@ -251,7 +277,22 @@ ul.nav li a {
 	background-image: url('../images/elite_icon.png');
 	padding-left: 55px;
 }
-
+.diablo-item-icon {
+	background-color: #aaa;
+	border-radius: 6px;
+	padding: 5px;
+	float: left;
+	margin-right: 10px;
+}
+.diablo-item-icon.orange {
+	border: solid 1px orange;
+}
+.diablo-item-icon.yellow {
+	border: solid 1px goldenrod;
+}
+.diablo-item-icon.blue {
+	border: solid 1px blue;
+}
 .g-person {
 	-webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,100);
 	box-shadow: 0 0 4px 0 rgba(0,0,0,100);

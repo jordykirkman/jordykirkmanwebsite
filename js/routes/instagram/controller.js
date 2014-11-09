@@ -30,10 +30,17 @@ function() {
 
 		actions: {
 			nextInstagram: function(){
-				this.incrementProperty('startAt');
+				if(this.get('model').objectAt(this.get('startAt')+3)){
+					var n = this.get('startAt');
+					var set = this.get('model').objectAt(n+2);
+					this.get('currentSet').addObject(set);
+					this.incrementProperty('startAt');
+				}
 			},
 			prevInstagram: function(){
-				this.decrementProperty('startAt');
+				if(this.get('model').objectAt(this.get('startAt')-1)){
+					this.decrementProperty('startAt');
+				}
 			},
 			navLink: function(route){
 				App.set('startScrolling', true);

@@ -11,13 +11,14 @@ function() {
 	App.MatchSerializer = DS.RESTSerializer.extend({
 		extractArray: function(store, type, payload, id, requestType) {
 				// now our dota match history
+				var newObj = {};
+				newObj['matches'] = [];
 				console.log(payload);
 				if(payload.matches){
-					var newObj = {};
+					
 					// var matchIds = payload.mapProperty('match_id');
 					// newObj['social']['matches'] = matchIds;
 
-					newObj['matches'] = [];
 					payload.matches.forEach(function(match){
 
 						var matchObj = {};
@@ -31,7 +32,6 @@ function() {
 							}
 						});
 						newObj['matches'].pushObject(matchObj);
-
 					});
 				}
 				// now our dota heroes

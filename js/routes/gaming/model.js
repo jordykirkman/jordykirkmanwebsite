@@ -15,13 +15,22 @@ function() {
 
 	App.Diablo = DS.Model.extend({
 		lastHeroPlayed: DS.belongsTo('diabloHero'),
-		diabloHeroes: DS.hasMany('diabloHero'),
+		heroes: DS.hasMany('diabloHero'),
 		monsterKills: DS.attr('number'),
 		eliteKills: DS.attr('number'),
 	});
 	App.DiabloHero = DS.Model.extend({
 		class: DS.attr('string'),
 		level: DS.attr('string'),
+		name: DS.attr('string'),
+		paragonLevel: DS.attr('string'),
+		mainHandIcon: DS.attr('string'),
+		mainHandName: DS.attr('string'),
+		mainHandColor: DS.attr('string'),
+		mainHandImage: function(){
+			var icon = this.get('mainHandIcon');
+			return "http://media.blizzard.com/d3/icons/items/large/" + icon + ".png"
+		}.property('mainHandIcon')
 	});
 
 	App.Starcraft = DS.Model.extend({

@@ -16,6 +16,7 @@ function() {
 			newObj['gaming']['id'] = 1;
 
 			// lets lets reformat our d3 history
+			if(payload.gaming.diablo){
 			if(payload.gaming.diablo.heroes){
 				var diabloObj = {};
 				diabloObj['id'] = 1;
@@ -27,7 +28,13 @@ function() {
 				newObj['diablos'] = [];
 				newObj['diablos'].pushObject(diabloObj);
 				newObj['gaming']['diablo'] = 1;
-				newObj['diabloHeroes'] = payload.gaming.diablo.heroes;
+				payload.gaming.heroes.forEach(function(hero){
+					hero['mainHandIcon'] = hero.items.mainHand.icon;
+					hero['mainHandName'] = hero.items.mainHand.name;
+					hero['mainHandColor'] = hero.items.mainHand.displayColor;
+				});
+				newObj['diabloHeroes'] = payload.gaming.heroes;
+			}
 			}
 
 			// now our starcraft career

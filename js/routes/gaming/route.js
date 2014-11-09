@@ -26,4 +26,9 @@ function() {
 
 	});
 
+	App.GamingLoadingRoute = Ember.Route.extend({
+	});
+	var LoadTemplate = Ember.Handlebars.compile('<div class="loading"><img src="./images/hydra_loading.gif"/></div>');
+	App.register( 'template:gaming.loading', LoadTemplate );
+
 });

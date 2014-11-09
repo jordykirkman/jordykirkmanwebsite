@@ -3,6 +3,7 @@
   <div class="padd">
     <h3>Last played DotA2 heroes</h3>
     <p class="caption">Last heroes fetched dynamically from the Steam match history api. An abstracted ember view transforms each hero id into the image with name.</p>
+    <p>It also fetches the heroes dynamically. So when they introduce new heroes, the app will still work. The only part that is not dynamic is the picture. I have an image sprite with all the heroes that the app moves to display the correct one. If a hero appears that is not yet on the image sprite, it will display the name only.</p>
     <div class="dota-heroes">
       {{#each controller}}
           {{view App.dotaHeroView}}

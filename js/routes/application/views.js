@@ -71,8 +71,12 @@ function() {
 
 				var spin = toTop / 2;
 
-				biggear.animate().rotate(spin / 2);
-				lilgear.animate().rotate(spin * -0.75);
+				if(biggear && lilgear){
+
+					biggear.animate().rotate(spin / 2);
+					lilgear.animate().rotate(spin * -0.75);
+
+				}
 
 				if( toTop >= triggerPos ){
 					if(App.get('nextRoute')){

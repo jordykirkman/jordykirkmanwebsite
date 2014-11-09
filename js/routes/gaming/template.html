@@ -3,13 +3,25 @@
   <div class="padd">
     <h3>Diablo 3 career monster kills</h3>
     <p class="caption">Career info fetched from Blizzards Diablo 3 Api. Documentation <a href="http://blizzard.github.io/d3-api-docs" target="_blank">here</a></p>
-    <span class="diablo-kills">
-    kills: {{model.diablo.monsterKills}}
-    </span>
-    <span class="diablo-elite-kills">
-    elite kills: {{model.diablo.eliteKills}}
-    </span>
   </div>
+  <div class="row clearfix padd">
+    <div class="eight columns">
+      <span class="diablo-kills">
+      kills: {{model.diablo.monsterKills}}
+      </span>
+      <span class="diablo-elite-kills">
+      elite kills: {{model.diablo.eliteKills}}
+      </span>
+    </div>
+    <div class="eight columns">
+      <img {{bind-attr class="model.diablo.lastHeroPlayed.mainHandColor :diablo-item-icon" src=model.diablo.lastHeroPlayed.mainHandImage}}/>
+      Last hero Played: {{model.diablo.lastHeroPlayed.name}} the {{model.diablo.lastHeroPlayed.class}}<br/>
+      Level: {{model.diablo.lastHeroPlayed.level}}<br/>
+      Paragon Level: {{model.diablo.lastHeroPlayed.paragonLevel}}<br/>
+      Main weapon: {{model.diablo.lastHeroPlayed.mainHandName}}<br/>
+    </div>
+  </div>
+
 
 </div>
 

@@ -11,8 +11,9 @@ function() {
 		actions: {
 			more: function(){
 				var route = App.get('nextRoute');
-				console.log(App.get('nextRoute'));
-				this.transitionToRoute(route);
+				if(route){
+					this.transitionToRoute(route);
+				}
 			},
 			navLink: function(route){
 				App.set('startScrolling', true);
