@@ -37,7 +37,7 @@ define(
 		'js/routes/gaming/module',
 		'js/routes/dota/module',
 		'js/routes/art/module',
-		// 'js/routes/dev/module',
+		'js/routes/dev/module',
 	],
 
 	function(Require) {
@@ -76,15 +76,6 @@ define(
 
 		});
 
-	});
-
-
-
-	App.DevRoute = App.ScrollerRoute.extend({
-		prev: 'art',
-		next: null,
-		past: 'dev',
-		link: {'name': 'Dev', 'link': 'dev'},
 	});
 
 	App.LoadingRoute = Ember.Route.extend();

@@ -9,13 +9,22 @@ function() {
 
 	// controller for main route
 	App.ApplicationController = Ember.Controller.extend({
-		actions: {
-			more: function(){
-				var route = App.get('nextRoute');
-				if(route){
-					this.transitionToRoute(route);
+
+		more: function(){
+			var toTop = App.get('toTop');
+			var triggerPos = App.get('triggerPos');
+			var route = App.get('nextRoute');
+
+			if( toTop >= triggerPos ){
+				if(App.get('nextRoute')){
+					if(route){
+						this.transitionToRoute(route);
+					}
 				}
-			},
+			}
+		}.observes('App.toTop', 'App.triggerPos'),
+
+		actions: {
 			navLink: function(route){
 				App.set('startScrolling', true);
 				App.set('scrollTo', route.link);

@@ -8,6 +8,7 @@ define(
 function() {
 
 	App = Ember.Application.create({
+		classNames: ['app'],
 		customEvents: {
 	    	// add support for the paste event
 	    	scroll: "scroll"
