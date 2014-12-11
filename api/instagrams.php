@@ -9,6 +9,8 @@ if($_GET['minid']){
     define('COUNT', 2);
 }
 
+$http_status;
+
 function get_instagram() {
 
     // OK cool - let's create a new cURL resource handle
@@ -20,10 +22,12 @@ function get_instagram() {
     // Should cURL return or print out the data? (true = return, false = print)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     // Timeout in seconds
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 20);
     // Download the given URL, and return output
     $output = curl_exec($ch);
     // Close the cURL resource, and free system resources
+    $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
     curl_close($ch);
     return json_decode($output);
 }
@@ -35,6 +39,7 @@ $response = array(
     'instagrams' => $feed
 );
 
+header(':', true, $http_status);
 // encode them and return it
 echo json_encode($response);
 
