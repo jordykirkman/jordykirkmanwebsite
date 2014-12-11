@@ -32,6 +32,9 @@ function() {
 					hero['mainHandIcon'] = hero.items.mainHand.icon;
 					hero['mainHandName'] = hero.items.mainHand.name;
 					hero['mainHandColor'] = hero.items.mainHand.displayColor;
+					hero['headIcon'] = hero.items.head.icon;
+					hero['headName'] = hero.items.head.name;
+					hero['headColor'] = hero.items.head.displayColor;
 				});
 				newObj['diabloHeroes'] = payload.gaming.heroes;
 			}

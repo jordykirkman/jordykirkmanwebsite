@@ -27,10 +27,17 @@ function() {
 		mainHandIcon: DS.attr('string'),
 		mainHandName: DS.attr('string'),
 		mainHandColor: DS.attr('string'),
+		headIcon: DS.attr('string'),
+		headName: DS.attr('string'),
+		headColor: DS.attr('string'),
 		mainHandImage: function(){
 			var icon = this.get('mainHandIcon');
 			return "http://media.blizzard.com/d3/icons/items/large/" + icon + ".png"
-		}.property('mainHandIcon')
+		}.property('mainHandIcon'),
+		headImage: function(){
+			var icon = this.get('headIcon');
+			return "http://media.blizzard.com/d3/icons/items/large/" + icon + ".png"
+		}.property('headIcon')
 	});
 
 	App.Starcraft = DS.Model.extend({
