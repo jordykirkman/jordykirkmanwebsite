@@ -16,7 +16,8 @@
   </div>
   <div class="sixteen columns section">
     <div class="padd">
-      <h3>This is a graph of how some of my skills.</h3>
+      <h3>This is a graph rating some of my skills.</h3>
+      <p class="caption">It's 2 Ember views. Each take in a list of values. One lists out the rating criteria and the other is for the bars. If I develop a new skill, I just add it to the list and the graph resizes accordingly. I've made a similar dynamic graph before using SVG.js and a single Ember view. I didnt think it was necessary for a simple bar graph to use svg. This could also be done with an Ember component for abstraction and reusability in a larger project.</p>
       {{#view App.BarGraphContainer}}
         {{view App.BarGraph}}
       {{/view}}

@@ -10,7 +10,7 @@ function() {
 	App.BarGraphContainer = Ember.View.extend({
 		classNames: ['graph-container'],
 		values: Ember.A([
-			{name: 'Godlike'},
+			{name: 'Killing Spree'},
 			{name: 'Miltikill'},
 			{name: 'Double Kill'},
 			{name: 'First Blood'},
@@ -30,13 +30,14 @@ function() {
 	App.BarGraph = Ember.CollectionView.extend({
 		classNames: ['graph', 'thirteen', 'columns'],
 		content: Ember.A([
-			{level: 80, name: 'Sass, Css3, HTML5'},
-			{level: 90, name: 'Javascript'},
-			{level: 90, name: 'Ember.js'},
-			{level: 60, name: 'PHP'},
-			{level: 40, name: 'Node.js'},
+			{level: 95, name: 'Problem solving'},
+			{level: 90, name: 'Sass, Css3, HTML5'},
+			{level: 85, name: 'Javascript'},
+			{level: 85, name: 'Ember.js'},
+			{level: 55, name: 'PHP'},
+			{level: 35, name: 'Node.js'},
 			{level: 20, name: 'Java'},
-			{level: 10, name: 'Hearthstone'}
+			{level: 15, name: 'Hearthstone'}
 		]),
 		barWidth: function(){
 			var count = this.get('content.length');
