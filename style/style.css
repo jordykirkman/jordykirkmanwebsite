@@ -324,10 +324,14 @@ ul.nav li a {
 .graph {
 	width: 100%;
 	height: 300px;
+	position: relative;
 }
 .graph .bar {
-	color: #ccc;
-	margin-right: 10px;
+	position: relative;
+	background-color: #ccc;
+	float: left;
+	margin-right: 1%;
+	text-align: center;
 }
 .graph .bar:last-child {
 	margin-right: 0;
