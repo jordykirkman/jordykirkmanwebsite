@@ -33,6 +33,7 @@ define(
 		'require',
 		'ember',
 		'js/routes/application/module',
+		'js/routes/index/module',
 		'js/routes/instagram/module',
 		'js/routes/gaming/module',
 		'js/routes/dota/module',
