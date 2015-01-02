@@ -393,7 +393,6 @@ ul.nav li a {
 	background-image: url('../images/footer_bg.jpg');
 	position: relative;
 	background-repeat: repeat-x;
-	max-width: 960px;
 	margin: 0 auto;
 }
 
