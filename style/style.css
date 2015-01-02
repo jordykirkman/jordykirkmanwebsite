@@ -100,13 +100,7 @@ body {
 img {
 	max-width: 100%;
 }
-.footer-wrapper {
-	width: 100%;
-	background-image: url('../images/footer_bg.jpg');
-	background-repeat: repeat-x;
-	position: relative;
-	color: #fff;
-}
+
 .content {
 	padding-top: 20px;
 	position: relative;
@@ -326,6 +320,21 @@ ul.nav li a {
 	color: #fff;
 	text-shadow: 1px 1px 2px #000;
 }
+#dev {
+	background-image: url('../images/office_bg.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	color: #fff;
+	padding: 60px 0;
+}
+#dev h3 {
+	color: #fff;
+	text-shadow: 1px 1px 2px #000;
+}
+#dev a {
+	color: #fff;
+}
 .graph-container {
 	position: relative;
 	background-color: #333;
@@ -374,11 +383,16 @@ ul.nav li a {
 	-webkit-border-radius: 6px 6px 6px 6px;
 	border-radius: 6px 6px 6px 6px;
 }
-
+.footer-wrapper {
+	background-image: url('../images/background.jpg');
+	color: #fff;
+}
 .footer {
-	height: 300px;
+	min-height: 300px;
 	padding: 20px;
+	background-image: url('../images/footer_bg.jpg');
 	position: relative;
+	background-repeat: repeat-x;
 	max-width: 960px;
 	margin: 0 auto;
 }

@@ -130,8 +130,8 @@
     /* Note: Design for a width of 320px */
 
     @media only screen and (max-width: 767px){
-        #dota {
-            background-size: inherit;
+        #dota, #dev {
+            background-size: auto 100%;
         }
     }
 
@@ -209,6 +209,26 @@
         .container .sixteen.columns,
         .container .one-third.column,
         .container .two-thirds.column { width: 100%; }
+
+        .container .one.column.small-half,
+        .container .one.columns.small-half,
+        .container .two.columns.small-half,
+        .container .three.columns.small-half,
+        .container .four.columns.small-half,
+        .container .five.columns.small-half,
+        .container .six.columns.small-half,
+        .container .seven.columns.small-half,
+        .container .eight.columns.small-half,
+        .container .nine.columns.small-half,
+        .container .ten.columns.small-half,
+        .container .eleven.columns.small-half,
+        .container .twelve.columns.small-half,
+        .container .thirteen.columns.small-half,
+        .container .fourteen.columns.small-half,
+        .container .fifteen.columns.small-half,
+        .container .sixteen.columns.small-half,
+        .container .one-third.column.small-half,
+        .container .two-thirds.column { width: 50%; }
     }
 
 
