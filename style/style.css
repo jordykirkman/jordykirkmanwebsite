@@ -382,3 +382,37 @@ ul.nav li a {
 	max-width: 960px;
 	margin: 0 auto;
 }
+
+.google-plus-box {
+	width: 200px;
+	height: 200px;
+	background-image: url('../images/gnocchi.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	text-align: center;
+	position: relative;
+	background-color: #fff;
+	border: solid 1px #666;
+}
+.google-plus-box a {
+	text-decoration: none;
+}
+.google-plus-box span.gplus{
+	display: block;
+}
+.google-plus-box img.gplus {
+	width: 25px;
+}
+.google-plus-box .padding-box {
+	height: 35%;
+	width: 100%;
+}
+.google-plus-box .profile-pic {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-image: url('../images/jordy.jpg');
+	background-size: 100%;
+	margin: auto;
+	margin-bottom: 10px;
+}
