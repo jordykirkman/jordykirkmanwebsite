@@ -1,0 +1,29 @@
+<div id="gaming" class="gaming sixteen columns section">
+
+  <div class="padd">
+    <h3>Diablo 3 profile</h3>
+    <p class="caption">Career info fetched from Battle.net Api <a href="https://dev.battle.net/" target="_blank">here</a></p>
+  </div>
+  <div class="row clearfix padd">
+    <div class="sixteen columns">
+      <span class="floatleft diablo-kills">
+      career monster kills: {{model.diablo.monsterKills}}
+      </span>
+      <span class="diablo-elite-kills">
+      career elite kills: {{model.diablo.eliteKills}}
+      </span>
+    </div>
+    <div class="sixteen columns">
+    <h4>Last hero Played: {{model.diablo.lastHeroPlayed.name}} the {{model.diablo.lastHeroPlayed.class}}</h4>
+      <img {{bind-attr class="model.diablo.lastHeroPlayed.mainHandColor :diablo-item-icon" src=model.diablo.lastHeroPlayed.mainHandImage}}/>
+      <img {{bind-attr class="model.diablo.lastHeroPlayed.headColor :diablo-item-icon" src=model.diablo.lastHeroPlayed.headImage}}/>
+      Level: {{model.diablo.lastHeroPlayed.level}}<br/>
+      Paragon Level: {{model.diablo.lastHeroPlayed.paragonLevel}}<br/>
+      Main weapon: {{model.diablo.lastHeroPlayed.mainHandName}}<br/>
+    </div>
+  </div>
+
+
+</div>
+
+{{outlet}}

@@ -4,127 +4,30 @@
 <meta charset="utf-8">
 <title>Jordy Kirkman | Art | Gaming | Development</title>
   <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="style/animate-custom.css">
+  <link rel="stylesheet" href="style/normalize.css">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/base.css">
+  <link rel="stylesheet" href="style/skeleton.css">
+  <link rel="stylesheet" href="style/layout.css">
 
-  <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+  
+  <script data-main="js/app" src="js/libs/require.js"></script>
 
 </head>
 <body>
-  <script type="text/x-handlebars">
-  <div class="wrapper">
+<div id="svgcanvas" class="nav-splatter"></div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    {{view App.navView}}
-    <div id="canvas" class="nav-splatter"></div>
+  ga('create', 'UA-56127789-1', 'auto');
+  ga('send', 'pageview');
 
-    <div class="content">
-    <div class="header padd">
-      <img class="header-img" src="./images/bone_dragon_animated.gif"/>
-      <h2>Im Jordy and this is my site!</h2>
-      <p class="caption"> 
-        A developer who is not afraid to use animated gifs.
-      </p>
-      <div class="clear"></div>
-    </div>
-    </div>
+</script>
 
-    {{view App.staticNavView}}
-    
-    <div class="container">
-      {{outlet}}
-    </div>
-    <div {{bind-attr class=":lightbox App.lightbox::hide"}}>
-      <div class="image-container">
-       <span class="close-bttn" {{action "closeLightbox"}}><i class="fi-x"></i></span>
-       <img {{bind-attr src="App.lightboxImage"}}/>
-      </div>
-    </div>
-    </div>
-    <div class="clear"></div>
-    <div class="footer-wrapper">
-    <div class="footer">
-      <div class="g-person" data-href="//plus.google.com/u/0/101784341180890259086" data-theme="dark" data-layout="landscape" data-rel="author"></div>
-    </div>
-    </div>
-  </script>
-
-  <script type="text/x-handlebars" id="index">
-    
-      {{outlet}}
-    
-  </script>
-
-  <script type="text/x-handlebars" id="social">
-  <div id="social" class="social sixteen columns section">
-    <h3>Last Instagram posts -follow me! <a href="http://instagram.com/jordykirkman" target="_blank">instagram.com/jordykirkman</a></h3>
-    <p class="caption">Posts fetched dynamically from the instgram feed api</p>
-    {{#each model.instagrams}}
-      <div class="showcase-image">
-        <img {{bind-attr src="lowResolution"}}/>
-        <p>
-        {{caption}}
-        </p> 
-      </div>
-    {{/each}}
-    <div class="seperator"></div>
-    <h3>Last played DotA2 heroes</h3>
-    <p class="caption">Last heroes fetched dynamically from the Steam match history api. An abstracted ember view transforms each hero id into the image with name.</p>
-    <div class="dota-heroes">
-      {{#each model.matches}}
-          {{view App.dotaHeroView}}
-      {{/each}}
-      <div class="clear"></div>
-    </div>
-    <div class="seperator"></div>
-    <h3>Diablo 3 career monster kills</h3>
-    <p class="caption">Career info fetched from Blizzards Diablo 3 Api. Documentation <a href="http://blizzard.github.io/d3-api-docs" target="_blank">here</a></p>
-    <span class="diablo-kills">
-      kills: {{model.diablo.monsterKills}}
-    </span>
-    <span class="diablo-elite-kills">
-      elite kills: {{model.diablo.eliteKills}}
-    </span>
-  </div>
-    <div class="seperator"></div>
-
-    {{outlet}}
-  </script>
-
-  <script type="text/x-handlebars" id="art">
-  <div id="art" class="art sixteen columns section">
-    <h3>8bit Dota 2 Heroes</h3>
-    <p class="caption">Here is my Dota2 pixel art. I saw something similar someone had drawn before and was sad to find they only made a couple and stopped. So, I decided to make one for every hero myself. They are drawn at 4x scale.</p>
-    {{view App.imageViewer path="dota" full="naga_8bit.png" thumb="naga_8bit_thumb.png" alt="Naga Siren Dota 2 8-bit"}}
-    {{view App.imageViewer path="dota" full="doom_8bit.png" thumb="doom_8bit_thumb.png" alt="Doom Dota 2 8-bit"}}
-    {{view App.imageViewer path="dota" full="deathprophet_8bit.png" thumb="deathprophet_8bit_thumb.png" alt="Death Prophet Dota 2 8-bit"}}
-    {{view App.imageViewer path="dota" full="clockwerk_8bit.png" thumb="clockwerk_8bit_thumb.png" alt="Clockwerk Dota 2 8-bit"}}
-    {{view App.imageViewer path="dota" full="pugna_8bit.png" thumb="pugna_8bit_thumb.png" alt="Pugna Dota 2 8-bit"}}
-    {{view App.imageViewer path="dota" full="mirana_8bit.png" thumb="mirana_8bit_thumb.png" alt="Mirana Dota 2 8-bit"}}
-    {{view App.imageViewer path="dota" full="ogremagi_8bit.png" thumb="ogremagi_8bit_thumb.png" alt="Ogre Magi Dota 2 8-bit"}}
-  </div>
-    <div class="seperator"></div>
-    {{outlet}}
-  </script>
-
-  <script type="text/x-handlebars" id="dev">
-  <div id="dev" class="dev sixteen columns section">
-    <h3>Gifs of apps I have built</h3>
-    <p class="caption">Can you see the code? Ha! What, are you a corporate spy or something?</p>
-
-    <img class="app-gif" src="./images/dev/rm-400px.gif"/>
-    </div>
-  </script>
-
-  <script src="js/libs/jquery-1.10.2.js"></script>
-  <script src="js/libs/handlebars-1.1.2.js"></script>
-  <script src="js/libs/ember-1.3.1.js"></script>
-  <script src="js/libs/ember-data.js"></script>
-  <script src="js/libs/svg.min.js"></script>
-  <script src="js/app.js?1.0"></script>
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>

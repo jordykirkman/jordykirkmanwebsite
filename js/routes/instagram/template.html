@@ -1,0 +1,15 @@
+<div id="instagram" class="social sixteen columns section">
+
+	<div class="padd">
+	    <h3>Last Instagram posts -follow me! <a href="http://instagram.com/jordykirkman" target="_blank">instagram.com/jordykirkman</a></h3>
+	    <p class="caption">Posts fetched dynamically from the Instgram feed api. This Instagram feed is just for my gamer art.</p>
+	</div>
+	<div class="instagram-window">
+	{{#each currentSet}}
+		{{view App.InstagramImage}}
+	{{/each}}
+	</div>
+	
+</div>
+
+{{outlet}}
