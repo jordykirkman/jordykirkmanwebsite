@@ -140,6 +140,7 @@ img {
 	color: #fff;
 	right: 20px;
 	font-size: 40px;
+	cursor: pointer;
 }
 .lightbox .close-bttn:hover {
 	color: #ccc;
