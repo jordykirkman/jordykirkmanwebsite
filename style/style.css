@@ -140,6 +140,7 @@ img {
 	color: #fff;
 	right: 20px;
 	font-size: 40px;
+	cursor: pointer;
 }
 .lightbox .close-bttn:hover {
 	color: #ccc;
@@ -393,7 +394,6 @@ ul.nav li a {
 	background-image: url('../images/footer_bg.jpg');
 	position: relative;
 	background-repeat: repeat-x;
-	max-width: 960px;
 	margin: 0 auto;
 }
 
