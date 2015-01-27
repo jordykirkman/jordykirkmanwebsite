@@ -1,0 +1,14 @@
+{
+  "name": "site",
+  "version": "1.0.1",
+  "description": "Jordy Kirkman's website",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-copy": "~0.7.0",
+    "grunt-contrib-requirejs": "~0.4.4"
+  },
+  "private": true
+}
