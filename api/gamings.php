@@ -108,7 +108,7 @@ $response = array(
         'id' => 1,
         'heroes' => array($hero),
         // 'matches' => $matches,
-        'starcraft' => $sc2,
+        // 'starcraft' => $sc2,
         'diablo' => $d3
     )
 );
