@@ -5,7 +5,6 @@ define(
 		'./route',
 		'./controller',
 		'./model',
-		'./serializer',
 		'./views',
 		'ember',
 		'js/routes/application/application'

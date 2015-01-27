@@ -13,12 +13,15 @@ requirejs.config({
 		ember: 				'js/libs/ember-1.7.0',
 		emberdata: 			'js/libs/ember-data',
 		text: 				'js/libs/text',
-		svg: 				'js/libs/svg.min',
+		// svg: 				'js/libs/svg.min',
     },
 	shim: {
 		//scripts that cant be wrapped in a define function that have dependancies
 		'ember': {
 			deps: ['jquery', 'handlebars']
+		},
+		'handlebars': {
+			deps: ['jquery']
 		},
 		'emberdata': {
 			deps: ['ember']

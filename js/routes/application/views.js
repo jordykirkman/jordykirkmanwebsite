@@ -2,7 +2,6 @@ define(
 	// Dependencies
 	[
 		'ember',
-		'svg',
 		'js/routes/application/application',
 	],
 	
